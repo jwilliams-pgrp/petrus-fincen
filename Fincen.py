@@ -8,6 +8,9 @@ from datetime import datetime
 # Date of file - Include leading 0s
 AsOfDate = '10/01/2024'
 
+# File path
+FilePath = 'R:\Conversion\Archway\DeptOfBanking'
+
 
 
 ### Files ###
@@ -16,10 +19,10 @@ AsOfDate = '10/01/2024'
 AsOfDate_File = AsOfDate[-4:] + AsOfDate[:2] + AsOfDate[3:5]
 
 # Business file directory
-business = pandas.read_csv(rf'R:\Conversion\Archway\DeptOfBanking\Business_{AsOfDate_File}.csv')
+business = pandas.read_csv(rf'{FilePath}\Business_{AsOfDate_File}.csv')
 
 # People file directory
-people = pandas.read_csv(rf'R:\Conversion\Archway\DeptOfBanking\Person_{AsOfDate_File}.csv')
+people = pandas.read_csv(rf'{FilePath}\Person_{AsOfDate_File}.csv')
 
 
 
@@ -112,7 +115,7 @@ conn.close()
 
 
 # Create final excel file
-with pandas.ExcelWriter(rf'R:\Conversion\Archway\DeptOfBanking\Fincen_{AsOfDate_File}.xlsx') as writer:
+with pandas.ExcelWriter(rf'{FilePath}\Fincen_{AsOfDate_File}.xlsx') as writer:
    
     # Create tabs for file excel file
     people.to_excel(writer, sheet_name="People", index=False)
