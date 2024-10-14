@@ -29,17 +29,17 @@ people = pandas.read_csv(rf'{FilePath}\Person_{AsOfDate_File}.csv')
 ### Database connection & username ###
 
 # Open database connection
-conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=ptcsql101;DATABASE=ExternalData;Trusted_connection=yes', autocommit=True)
+conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=ptcsql807;DATABASE=ExternalData;Trusted_connection=yes', autocommit=True)
 
 # Open database connection
-engine = sqlalchemy.create_engine('mssql+pyodbc://ptcsql101/ExternalData?driver=ODBC+Driver+17+for+SQL+Server')
+engine = sqlalchemy.create_engine('mssql+pyodbc://ptcsql807/ExternalData?driver=ODBC+Driver+17+for+SQL+Server')
 
 # Create cursor
 cur=conn.cursor()
 cur.fast_executemany = True
 
 # Grab database username metadata
-conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=ptcsql101;DATABASE=ExternalData;Trusted_connection=yes', autocommit=True)
+conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=ptcsql807;DATABASE=ExternalData;Trusted_connection=yes', autocommit=True)
 output = pandas.read_sql("SELECT suser_sname() Username", conn)
 Username = output['Username'].values[0]
 
